@@ -1,0 +1,111 @@
+@font-face {
+  font-family: Ubuntu-Regular;
+  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
+}
+
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	font-family: Ubuntu;
+}
+
+table{
+	background-color: white;
+	height: 300px;
+	width: 300px;
+	vertical-align: center;
+	border-radius: 20px;
+}
+
+h1{
+	color: white;
+	font: Ubuntu;
+	padding: 10px;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+.button {
+  font-style: Ubuntu;
+  font-size: 10px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 100px;
+  height: 32px;
+  border-radius: 21px;
+
+  background: #d41872;
+  background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
+  background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
+  background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
+  background: linear-gradient(left, #a445b2, #d41872, #fa4299);
+  position: relative;
+  z-index: 1;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.container-icon{
+	padding-left: 40px;
+}
+
+.text-input{
+	width: 100%;
+	padding-left: 50px;
+	font: Ubuntu;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-signup {
+  background-image: url('../images/bg-signup.jpg');
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;  
+}
+
+.icon{
+	height:20px;
+	width:20px;
+}
+
+
+

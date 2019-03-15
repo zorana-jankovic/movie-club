@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>MovieClub - Filmovi</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../css/mycss.css">
+		
+		<script src="../js/filmovisrb.js"></script>
+	</head>
+
+	<body onLoad="popuni();">
+		<header>
+			<ul class="menu cf">
+			<li><a href = "../index.html"><img src="../images/logo.png" height="18px" width="120px"></img></a></li>
+  				<li><a href="">Opšte informacije</a>
+    				<ul class="submenu">
+      					<li><a href="onama.html">O nama</a></li>
+      					<li><a href="kontakti.html">Kontakt</a></li>
+    				</ul>			
+  				</li>
+ 			 	<li><a href="">Istraži</a>
+    				<ul class="submenu">
+					     <li><a href="filmovi.html">Filmovi</a></li>
+					     <li><a href="glumci.html">Glumci</a></li>
+					     <li><a href="vesti.html">Vesti</a></li>
+    				</ul>			
+  				</li>
+  				<li><a href="mojifilmovi.html">Moji filmovi</a></li>
+			</ul>
+		</header>
+
+		<div class="container-fluid mt-5">
+		
+			<div>
+				<ul class="breadcrumb">
+							<li><a href="../index.html">Početna</a></li>
+							<li><a href="" class="current">Filmovi</a></li>
+				</ul>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Filmovi</h1>
+					<hr>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<form name="forma" onsubmit="return sortiraj();">
+						Sortiraj po:
+						<select name="sort">
+							<optgroup label="Ime filma">
+								<option>Rastuće</option>
+								<option>Opadajuće</option>
+							</optgroup>
+							<optgroup label="Žanr">
+								<option>Akcija</option>
+								<option>Drama</option>
+								<option>Triler</option>
+								<option>Komedija</option>
+								<option>Fantazija</option>
+								<option>Horor</option>
+								<option>Naučna fantastika</option>
+							</optgroup>
+							<optgroup label="Ocena">
+								<option>Rastuće</option>
+								<option>Opadajuće</option>
+							</optgroup>
+						</select>
+						&nbsp;
+						<button type="submit" class="btn btn-success">Sortiraj &nbsp;<i class="fa fa-sort-amount-asc"></i></button>
+					</form>
+					<hr>
+					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<form class="search-container">
+					    <input type="text" id="search-bar" placeholder="Unesite ime filma">
+					    	<a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+					 </form>
+					 <hr>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container mt-5 container" id="content">
+		
+		</div>
+		
+	<footer class="footer mt-5 pt-4">
+			<div class="container ">
+				<div class="row text-center text-xs-center text-sm-left text-md-left">
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<h5 class="text-white">Opšte informacije</h5>
+						<ul class="list-unstyled quick-links">
+							<li><a href="onama.html"><i class="fa"></i>O nama</a></li>
+							<li><a href="kontakti.html"><i class="fa"></i>Kontakt</a></li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<h5 class="text-white">Istraži</h5>
+						<ul class="list-unstyled quick-links">
+							<li><a href="filmovi.html"><i class="fa"></i>Filmovi</a></li>
+							<li><a href="glumci.html"><i class="fa"></i>Glumci</a></li>
+							<li><a href="vesti.html"><i class="fa"></i>Vesti</a></li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<h5 class="text-white">Ostalo</h5>
+						<ul class="list-unstyled quick-links">
+							<li><a href="mojifilmovi.html"><i class="fa fa-angle-double-right"></i>Мoji filmovi</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+						<ul class="list-unstyled list-inline social text-center">
+							<li class="list-inline-item faa"><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+							<li class="list-inline-item faa"><a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+							<li class="list-inline-item faa"><a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a></li>
+							<li class="list-inline-item faa"><a href="https://www.google.com"><i class="fa fa-google-plus"></i></a></li>
+							<li class="list-inline-item faa"><a href="https://www.envelope.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+						</ul>
+					</div>
+					</hr>
+				</div>	
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+						<hr style="background-color:white;">
+						<p>Copyright 2019, Odsek za softversko inženjerstvo Elektrotehničkog fakulteta Univerziteta u Beogradu.</p>
+					</div>
+					
+				</div>	
+			</div>
+		</footer>
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		
+	</body>
+
+</html>
