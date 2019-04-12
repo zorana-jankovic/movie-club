@@ -67,17 +67,17 @@
 		
 									<ol> 
 
-									  <li><a href>Marko Todorović</a> </li> <input type = "button" value = "izbriši" class="dugme"> </input> &nbsp&nbsp  <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Ana Dimitrijević</a></li> <input type = "button" value = "izbriši" class="dugme"> </input> &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Zorana Janković</a></li> <input type = "button" value = "izbriši" class="dugme"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Petar Perić</a></li> <input type = "button" value = "izbriši" class="dugme"> </input> &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Nikola Simić</a></li> <input type = "button" value = "izbriši" class="dugme"> </input> &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Stefan Stefanović</a></li> <input type = "button" value = "izbriši" class="dugme"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Jelena Stanić</a></li> <input type = "button" value = "izbriši" class="dugme"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Nikola Nikolić</a></li> <input type = "button" value = "izbriši" class="dugme"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Stefan Simić</a></li> <input type = "button" value = "izbriši" class="dugme"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Marko Marković</a></li> <input type = "button" value = "izbriši" class="dugme"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
-									  <li><a href>Jovan Petrović</a></li> <input type = "button" value = "izbriši" class="dugme"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Marko Todorović</a> </li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniModeratora()"> </input> &nbsp&nbsp  <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Ana Dimitrijević</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniModeratora()"> </input> &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Zorana Janković</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniModeratora()"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Petar Perić</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniKorisnika()"> </input> &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Nikola Simić</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniKorisnika()"> </input> &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Stefan Stefanović</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniKorisnika()"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Jelena Stanić</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniKorisnika()"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Nikola Nikolić</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniKorisnika()"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Stefan Simić</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniKorisnika()"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Marko Marković</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniKorisnika()"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
+									  <li><a href>Jovan Petrović</a></li> <input type = "button" value = "izbriši" class="dugme" onClick="ukloniKorisnika()"> </input>  &nbsp&nbsp <input type = "button" value = "unapredi" class="dugme"> </input>
 		  
 		 							</ol>
 		 						</div>
@@ -219,6 +219,18 @@
 		
 		<!-- Googlemaps JavaScript -->
 		<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+		
+		<script language="javascript">
+		
+		function ukloniModeratora(){
+		alert("Korisnik vise nije moderator!");
+		}
+		
+		function ukloniKorisnika(){
+		alert("Korisnik je uspesno uklonjen!");
+		}
+		
+		</script>
 		
 
 	</body>

@@ -23,3 +23,7 @@ function myMap() {
 				
 						
 			}
+			
+			function posalji() {
+				alert("Vas komentar je poslat!");
+			}

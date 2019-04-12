@@ -21,3 +21,7 @@ function myMap() {
 			
 			function dodaj(){	
 			}
+			
+			function posalji() {
+				alert("Vas komentar je poslat!");
+			}
