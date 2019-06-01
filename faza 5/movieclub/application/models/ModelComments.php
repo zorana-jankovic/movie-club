@@ -22,7 +22,11 @@ class ModelComments extends CI_Model {
         $this->db->insert("comments");
     }
 
-   
+   public function deleteComment($id){
+       
+       $this->db->where("id",$id);
+       $this->db->delete("comments");
+   }
   
     
 }

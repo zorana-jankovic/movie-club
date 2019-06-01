@@ -42,6 +42,12 @@ class Moderator extends Core {
         parent::about($controller);
     }
 
+    public function notifications($controller = null,$id=NULL) {
+        $controller = "Moderator";
+        $user = $this->session->userdata('user')->id;
+        parent::notifications($controller, $user);
+    }
+
     public function movies($controller = null, $movies = null, $myMovies = null) {
         $controller = "Moderator";
         parent::movies($controller);
@@ -242,12 +248,12 @@ class Moderator extends Core {
         $author = $this->session->userdata("user")->username;
 
         $this->ModelNews->add($title, $body, "images/" . $imgSrc, $author);
-
         $news = $this->ModelNews->fetchByName($title);
 
         foreach ($tags as $tagName) {
             $tag = $this->ModelActors->fetchByName($tagName);
             $this->ModelTags->add($news->id, $tag->id);
+            $this->ModelTags->addNotification($news->id, $tag->id);
         }
 
 
@@ -276,35 +282,36 @@ class Moderator extends Core {
         header('Location: ' . $location);
     }
 
-    
-     public function addToMyMovies($movieId) {
+    public function addToMyMovies($movieId) {
 
         $id = $this->session->userdata("user")->id;
         $movie = $this->ModelSavedMovies->check($id, $movieId);
-        if($movie == null) {
-        $this->ModelSavedMovies->add($id, $movieId);
+        if ($movie == null) {
+            $this->ModelSavedMovies->add($id, $movieId);
         }
         $movies = $this->ModelSavedMovies->fetch($id);
         $controller = "Moderator";
         parent::movies($controller, $movies);
-        
     }
 
     public function rate($movieId) {
-        
+
         $id = $this->session->userdata("user")->id;
         $rate = $this->ModelRatings->check($id, $movieId);
         $oldRating = null;
-        if($rate == null) {
+        if ($rate == null) {
             $this->ModelRatings->add($id, $movieId, $this->input->post("stars"));
         } else {
             $oldRating = $rate->rating;
             $this->ModelRatings->update($id, $movieId, $this->input->post("stars"));
         }
-        $this->ModelMovies->updateRating($movieId, $this->input->post("stars"),$oldRating);
-        
+        $this->ModelMovies->updateRating($movieId, $this->input->post("stars"), $oldRating);
+
         $this->showMovie($movieId);
-  
-        
+    }
+    
+    public Function obrisiNot($id){
+        $this->ModelTags->obrisiNot($id);
+        $this->notifications();
     }
 }

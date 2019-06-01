@@ -2,18 +2,34 @@
 
     <div>
         <ul class="breadcrumb">
-            <li><a href = "<?php echo site_url($controller ."/index"); ?>"> Home</a></li>
+            <li><a href = "<?php echo site_url($controller . "/index"); ?>"> Home</a></li>
             <li><a href = "#" class="current"> News </a></li>
         </ul>
     </div>
 
-    <div class="row text-center">
-        <div class="col-lg-12">
-            <h1>News highlight</h1>
-            <hr>
-        </div>
+     <?php 
+         
+  
+         echo "<div class='row text-center'>";
+         echo "<div class='col-lg-12'>";
+         if(isset($poruka)){
+         echo "<div class='alert alert-info' id='alert_template' role='alert'>";
+               
+                echo "<font color='red'>".(String)$poruka."</font><br>";
+             
+              // echo " <button type='button' class='close'>×</button>";
+            echo "</div>";
+     }
+            echo "<h1>News highlight</h1>";
+           echo " <hr>";
+        echo "</div>";
 
-    </div>
+    echo "</div>";
+     
+    ?>
+
+   
+
 </div>
 
 

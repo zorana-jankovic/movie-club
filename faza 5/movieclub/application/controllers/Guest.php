@@ -37,6 +37,7 @@ class Guest extends Core {
         parent::about($controller);
     }
 
+    
     public function movies($controller = null, $movies = null, $myMovies = null) {
         $controller = "Guest";
         parent::movies($controller);

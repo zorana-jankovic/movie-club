@@ -22,6 +22,7 @@
             <ul class="menu cf">
                 <li><a href ="<?php echo site_url("Moderator/index"); ?>"> Home </a></li>
                 <li><a href="<?php echo site_url("Moderator/about"); ?>">About</a></li>
+                <li><a href="<?php echo site_url("Moderator/notifications"); ?>">Notifications</a></li>
                 <li>
                     <a href="">Search</a>
                     <ul class="submenu">

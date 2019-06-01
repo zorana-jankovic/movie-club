@@ -28,6 +28,22 @@ class Core extends CI_Controller {
 
     public function index($controller) {
 
+        $poruka=NULL;
+        if ($this->session->userdata('user')!=NULL){
+            $notifications = $this->ModelTags->dohvatiNot($this->session->userdata('user')->id);
+
+            $cnt=0;
+            foreach($notifications as $not){
+                $vest=$this->ModelNews->fetchById($not->idNews);
+                if ($vest[0]->status==1){
+                    $cnt=$cnt+1;
+               }
+            }
+      
+            if ($cnt>0){
+                $poruka="YOU HAVE NEW NOTIFICATIONS";
+            }
+        }
         $news = $this->ModelNews->fetchAll();
 
         $featured = [];
@@ -41,15 +57,33 @@ class Core extends CI_Controller {
         }
 
 
-        $this->showContent("news.php", array('news' => $news, 'featured' => $featured, 'controller' => $controller));
+        $this->showContent("news.php", array('news' => $news, 'featured' => $featured,'poruka'=>$poruka, 'controller' => $controller));
     }
 
     public function about($controller) {
         $this->showContent("about.php", array('controller' => $controller));
     }
 
-    public function movies($controller, $movies = null, $myMovies = null) {
+    public function notifications($controller,$idUser){
+        $vesti=[];
+         if ($this->session->userdata('user')!=NULL){
+            $notifications = $this->ModelTags->dohvatiNot($idUser);
+
+            
+            foreach($notifications as $not){
+             $vest=$this->ModelNews->fetchById($not->idNews);
+             if ((in_array($vest[0], $vesti)))
+             {}
+             else{
+                array_push($vesti,$vest[0]);
+             }
+            }
+           $this->showContent("newsNot.php", array('vesti'=>$vesti, 'controller' => $controller));
+        }
         
+    }
+    public function movies($controller, $movies = null, $myMovies = null) {
+
         if ($movies == null) {
             $movies = $this->ModelMovies->fetchAll();
         }
@@ -64,7 +98,7 @@ class Core extends CI_Controller {
             $cast[$i] = $this->ModelCast->fetch($movie->id);
             $i++;
         }
-        
+
         $this->showContent("movies.php", array('movies' => $movies, 'directors' => $directors, 'cast' => $cast, 'myMovies' => $myMovies, 'controller' => $controller));
     }
 
@@ -87,10 +121,10 @@ class Core extends CI_Controller {
 
         $actor = $this->ModelActors->fetch($id);
         $state = $this->ModelStates->fetch($actor->birthplace);
-       
+
         $this->showContent("actor.php", ["actor" => $actor, "state" => $state, "controller" => $controller]);
     }
-    
+
     public function directors($controller) {
 
         $directors = $this->ModelDirectors->fetchAll();
@@ -101,16 +135,15 @@ class Core extends CI_Controller {
 
         $director = $this->ModelDirectors->fetch($id);
         $state = $this->ModelStates->fetch($director->birthplace);
-       
+
         $this->showContent("director.php", ["director" => $director, "state" => $state, "controller" => $controller]);
     }
-    
 
     public function search($controller) {
 
         $searchName = $_POST['search'];
         $movies = $this->ModelMovies->fetchByName($searchName);
-        
+
         $i = 0;
         $directors = [];
         $cast = [];
@@ -121,17 +154,14 @@ class Core extends CI_Controller {
             $cast[$i] = $this->ModelCast->fetch($movie->id);
             $i++;
         }
-        
+
         $this->showContent("movies.php", array('movies' => $movies, 'directors' => $directors, 'cast' => $cast, 'myMovies' => null, 'controller' => $controller));
-        
-        
-        
     }
 
     public function sort($controller) {
-        
+
         $sortType = $_POST['sort'];
- 
+
 
         switch ($sortType) {
             case "Name/Ascending" : {
@@ -151,7 +181,7 @@ class Core extends CI_Controller {
                     break;
                 }
         }
-         
+
         $i = 0;
         $directors = [];
         $cast = [];
@@ -162,12 +192,8 @@ class Core extends CI_Controller {
             $cast[$i] = $this->ModelCast->fetch($movie->id);
             $i++;
         }
-        
+
         $this->showContent("movies.php", array('movies' => $sortedMovies, 'directors' => $directors, 'cast' => $cast, 'myMovies' => null, 'controller' => $controller));
-       
-       
     }
-    
-     
 
 }

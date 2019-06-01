@@ -43,6 +43,12 @@ class User extends Core {
         parent::about($controller);
     }
 
+    public function notifications($controller=null,$id=NULL){
+        $controller = "User";
+        $user=$this->session->userdata('user')->id;
+        parent::notifications($controller,$user);
+    }
+    
     public function movies($controller = null, $movies = null, $myMovies = null) {
         $controller = "User";
         parent::movies($controller);
@@ -160,4 +166,8 @@ class User extends Core {
         $this->showMovie($movieId);
     }
 
+     public Function obrisiNot($id){
+        $this->ModelTags->obrisiNot($id);
+        $this->notifications();
+    }
 }

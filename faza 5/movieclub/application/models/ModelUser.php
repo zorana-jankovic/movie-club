@@ -8,6 +8,32 @@ class ModelUser extends CI_Model {
         $this->user=NULL;
     }
     
+    public function fetchAll() {
+
+        $query = $this->db->get('users');
+        $result = $query->result();
+        return $result;
+    }
+    
+    public function fetchAll1() {
+        $val='1';
+        $this->db->where("type",$val);
+        $query = $this->db->get('users');
+        $result = $query->result();
+        return $result;
+    }
+    
+    public function fetchAll2() {
+        $val='2';
+        $this->db->where("type",$val);
+        $query = $this->db->get('users');
+        $result = $query->result();
+        return $result;
+    }
+    
+  
+    
+    
     public function fetch($username){
         $result=$this->db->where('username',$username)->get('users');
         $user=$result->row();
@@ -62,5 +88,29 @@ class ModelUser extends CI_Model {
     
      }
    
-    
+     public function deleteUser($id) {
+
+        $res = $this->db->where("id", $id)->get('users');
+        $kor = $res->row();
+
+        $val ='1';
+
+        if ($kor->type!= $val) {
+            $this->db->where("id", $id);
+            $this->db->delete("users");
+        } else {
+            $val ='2';
+            $this->db->set("type", $val);
+            $this->db->where("id", $id);
+            $this->db->update("users");
+        }
+    }
+
+    public function promoteUser($id) {
+        $val='1';
+        $this->db->set("type", $val);
+        $this->db->where("id", $id);
+        $this->db->update("users");
+    }
+
 }

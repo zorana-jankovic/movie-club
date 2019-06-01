@@ -41,7 +41,8 @@
 
 
                     echo "<form class = 'rating' method = 'post' action = '";
-                    ?> <?php echo site_url($controller . '/rate/' . $movie->id); ?> <?php  echo "'>
+                    ?> <?php echo site_url($controller . '/rate/' . $movie->id); ?> <?php
+                    echo "'>
                     <input type = 'submit' class = 'btn btn-success' value = 'Rate'></input>
                     <label>
                         <input type='radio' name='stars' value='1' />
@@ -84,7 +85,7 @@
                         <h5 class="card-title"> <?php echo $movie->title ?> </h5>
                         <p class="card-text"> Duration : <?php echo $movie->duration ?> min
                             <br>
-                            Rating : <?php echo number_format($movie->rating,1) ?> /5.0
+                            Rating : <?php echo number_format($movie->rating, 1) ?> /5.0
                         </p>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -178,6 +179,11 @@
                 foreach ($comments as $comment) {
 
                     echo "<p><b>" . $comment->title . "</b><br>" . $comment->body . "<span>" . $comment->author . "</span></p>";
+                    if ($this->session->userdata('user')->type == 0) {
+                        echo "<form action=".site_url("Admin/obrisiKomentar/".$comment->id."/".$movie->id) . " method='post'>";
+                        echo "<input type = 'submit' value = 'Delete' class='dugme'></input>&nbsp&nbsp";
+                        echo "</form>";
+                    }
                 }
                 ?>
             </div>
