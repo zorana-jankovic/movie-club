@@ -26,15 +26,6 @@
                         <option>Name/Ascending</option>
                         <option>Name/Descending</option>
                     </optgroup>
-                    <optgroup label='Genre'>
-                        <option>Action</option>
-                        <option>Drama</option>
-                        <option>Thriller</option>
-                        <option>Comedy</option>
-                        <option>Fantasy</option>
-                        <option>Horror</option>
-                        <option>Sci-Fi</option>
-                    </optgroup>
                     <optgroup label='Rating'>
                         <option>Rating/Ascending</option>
                         <option>Rating/Descending</option>
@@ -87,7 +78,7 @@
             . "</div>"
             . "<ul class='list-group list-group-flush'>"
             . "<li class='list-group-item'>"
-            . "Genre:<br> "
+            . "Genre:<br> ". $genres[$i]                   
             . "</li>" . ""
             . "<li class='list-group-item'>Directors:<br>";
             foreach ($directors[$i] as $director) {

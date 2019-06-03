@@ -37,7 +37,6 @@ class Guest extends Core {
         parent::about($controller);
     }
 
-    
     public function movies($controller = null, $movies = null, $myMovies = null) {
         $controller = "Guest";
         parent::movies($controller);
@@ -85,20 +84,24 @@ class Guest extends Core {
     public function submitLogin() {
 
 
-        if (!$this->ModelUser->fetch($this->input->post('username'))) {
-            $this->showLoginForm("Incorrect username!");
-        } else if (!$this->ModelUser->checkPassword($this->input->post('password'))) {
-            $this->showLoginForm("Incorrect password!");
-        } else {
-            $user = $this->ModelUser->user;
-            $this->session->set_userdata('user', $user);
-            if ($user->type == 0) {
-                redirect("Admin");
-            } else if ($user->type == 1) {
-                redirect("Moderator");
+        if ($this->input->post('username') != "" && $this->input->post('password') != "") {
+            if (!$this->ModelUser->fetch($this->input->post('username'))) {
+                $this->showLoginForm("Incorrect username!");
+            } else if (!$this->ModelUser->checkPassword($this->input->post('password'))) {
+                $this->showLoginForm("Incorrect password!");
             } else {
-                redirect("User");
+                $user = $this->ModelUser->user;
+                $this->session->set_userdata('user', $user);
+                if ($user->type == 0) {
+                    redirect("Admin");
+                } else if ($user->type == 1) {
+                    redirect("Moderator");
+                } else {
+                    redirect("User");
+                }
             }
+        } else {
+             $this->showLoginForm("Please fill in the required fields!");
         }
     }
 
@@ -113,27 +116,31 @@ class Guest extends Core {
 
     public function submitRegistration() {
 
+        if ($this->input->post('email') != "" && $this->input->post('username') != "" && $this->input->post('password') != "") {
 
-        if (!$this->ModelUser->checkEmail($this->input->post('email'))) {
+            if (!$this->ModelUser->checkEmail($this->input->post('email'))) {
 
-            if (!$this->ModelUser->checkUsername($this->input->post('username'))) {
+                if (!$this->ModelUser->checkUsername($this->input->post('username'))) {
 
-                $password = $this->input->post('password');
+                    $password = $this->input->post('password');
 
-                if (strlen($password) >= 4) {
+                    if (strlen($password) >= 4) {
 
-                    $user = $this->ModelUser->createAccount($this->input->post('email'), $this->input->post('username'), $this->input->post('password'));
-                    $this->session->set_userdata('user', $user);
+                        $user = $this->ModelUser->createAccount($this->input->post('email'), $this->input->post('username'), $this->input->post('password'));
+                        $this->session->set_userdata('user', $user);
 
-                    redirect("User");
+                        redirect("User");
+                    } else {
+                        $this->showRegistrationForm("Password must be at least 4 caracters long!");
+                    }
                 } else {
-                    $this->showRegistrationForm("Password must be at least 4 caracters long!");
+                    $this->showRegistrationForm("Username already exists!");
                 }
             } else {
-                $this->showRegistrationForm("Username already exists!");
+                $this->showRegistrationForm("Email alrady in use!");
             }
         } else {
-            $this->showRegistrationForm("Email alrady in use!");
+            $this->showRegistrationForm("Please fill in the required fields!");
         }
     }
 

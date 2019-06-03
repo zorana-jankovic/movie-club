@@ -111,8 +111,10 @@ class User extends Core {
         $title = $this->input->post("name");
         $body = $this->input->post("text");
         $author = $this->session->userdata("user")->username;
-
+        
+       if ($title!="" && $body!="") {
         $this->ModelComments->add($title, $body, $author, $idMovie);
+       }
 
         $location = site_url("User/showMovie/" . $idMovie);
         header('Location: ' . $location);
@@ -121,14 +123,10 @@ class User extends Core {
     public function subscribe($idActor) {
 
         $user = $this->session->userdata("user");
-
-
         $result = $this->ModelSubscriptions->fetch($user->id, $idActor);
 
-        if ($result != null) {
-            $message = "You are already subscribed";
-        } else {
-            $message = "Success! You will start receiving notifications.";
+        if ($result == null) {
+           
             $this->ModelSubscriptions->add($user->id, $idActor);
         }
 
@@ -137,6 +135,8 @@ class User extends Core {
 
 
         header('Location: ' . $location);
+        //$this->showActor($idActor, "User");
+        
     }
 
     public function addToMyMovies($movieId) {
@@ -145,10 +145,13 @@ class User extends Core {
         $movie = $this->ModelSavedMovies->check($id, $movieId);
         if($movie == null) {
         $this->ModelSavedMovies->add($id, $movieId);
-        }
+        } 
         $movies = $this->ModelSavedMovies->fetch($id);
         $controller = "User";
-        parent::movies($controller, $movies);
+        
+        $location = site_url("User/myMovies");
+        header('Location: ' . $location);
+        
         
     }
 

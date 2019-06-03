@@ -110,19 +110,21 @@ class Moderator extends Core {
         $body = $this->input->post("text");
         $author = $this->session->userdata("user")->username;
 
-
+        if($title!="" && $body!="") {
         $this->ModelComments->add($title, $body, $author, $idMovie);
-
+        }
+        
         $location = site_url("Moderator/showMovie/" . $idMovie);
         header('Location: ' . $location);
     }
 
-    public function addMovie() {
+    public function addMovie($mssg=null) {
 
         $genres = $this->ModelGenres->fetchAll();
         $actors = $this->ModelActors->fetchAll();
         $directors = $this->ModelDirectors->fetchAll();
 
+        $data['mssg'] = $mssg;
         $data['genres'] = $genres;
         $data['actors'] = $actors;
         $data['directors'] = $directors;
@@ -147,6 +149,13 @@ class Moderator extends Core {
         $trailerSrc = $this->input->post("trailerSrc");
         $description = $this->input->post("description");
 
+        if ($title=="" || $genre=="" || $duration=="" || $year=="" || $posterSrc=="" || $img1=="" || img2=="" || $img3=="" || $img4=="" || $cast=="" || $directors=="" || $trailerSrc=="" || $description=="") {
+            
+            $this->addMovie("Please fill in the required fields!");
+            
+        }
+        else {
+        
         $this->ModelMovies->add($title, $genre, $duration, $year, "images/" . $posterSrc, $img1, $img2, $img3, $img4, $trailerSrc, $description);
 
 
@@ -168,12 +177,14 @@ class Moderator extends Core {
 
 
         redirect("Moderator");
+        }
     }
 
-    public function addActor() {
+    public function addActor($mssg=null) {
 
 
         $states = $this->ModelStates->fetchAll();
+        $data['mssg'] = $mssg;
         $data['states'] = $states;
         $data['controller'] = "Moderator";
         $this->showContent("addActor.php", $data);
@@ -191,7 +202,11 @@ class Moderator extends Core {
         $funfact = $this->input->post("funfact");
         $highlight = $this->input->post("highlight");
 
-
+        if($name=="" || $birthday=="" || $birthplaceName=="" || $posterSrc=="" || $profileImgLeft =="" || $profileImgRight=="" || $funfact=="" || $highlight=="") {
+             $this->addActor("Please fill in the required fields!");
+        }
+        else {
+        
         $myArray = explode(',', $birthplaceName);
         $birthplace = $this->ModelStates->fetchCityState($myArray[0], $myArray[1]);
 
@@ -199,6 +214,7 @@ class Moderator extends Core {
         $this->ModelActors->add($name, $birthday, $birthplace->id, $biography, "images/" . $posterSrc, "images/" . $profileImgLeft, "images/" . $profileImgRight, $funfact, $highlight);
 
         redirect("Moderator");
+        }
     }
 
     public function addDirector() {
@@ -231,11 +247,12 @@ class Moderator extends Core {
         redirect("Moderator");
     }
 
-    public function addNews() {
+    public function addNews($mssg=null) {
 
         $data['tags'] = $this->ModelActors->fetchAll();
         $data['controller'] = "Moderator";
-
+        $data['mssg'] = $mssg;
+        
         $this->showContent("addNews.php", $data);
     }
 
@@ -247,6 +264,10 @@ class Moderator extends Core {
         $imgSrc = $this->input->post("imgSrc");
         $author = $this->session->userdata("user")->username;
 
+        if($title=="" || $body=="" || $tags=="" || $imgSrc=="") {
+            $this->addNews("Please fill in the required fields!");
+        }
+        else {
         $this->ModelNews->add($title, $body, "images/" . $imgSrc, $author);
         $news = $this->ModelNews->fetchByName($title);
 
@@ -259,6 +280,7 @@ class Moderator extends Core {
 
 
         redirect("Moderator");
+        }
     }
 
     public function subscribe($idActor) {
@@ -268,10 +290,8 @@ class Moderator extends Core {
 
         $result = $this->ModelSubscriptions->fetch($user->id, $idActor);
 
-        if ($result != null) {
-            $message = "You are already subscribed";
-        } else {
-            $message = "Success! You will start receiving notifications.";
+        if ($result == null) {
+   
             $this->ModelSubscriptions->add($user->id, $idActor);
         }
 
@@ -291,7 +311,9 @@ class Moderator extends Core {
         }
         $movies = $this->ModelSavedMovies->fetch($id);
         $controller = "Moderator";
-        parent::movies($controller, $movies);
+        
+        $location = site_url("Moderator/myMovies");
+        header('Location: ' . $location);
     }
 
     public function rate($movieId) {

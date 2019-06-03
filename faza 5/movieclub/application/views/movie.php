@@ -31,7 +31,7 @@
                 <br>
                 <br>
                 <?php
-                if ($controller != "Guest") {
+                if ($controller != "Guest" && $controller != "Admin") {
                     echo "<form name = 'formWatchlist' method = 'post' action = '";
                     ?> <?php echo site_url($controller . '/addToMyMovies/' . $movie->id); ?> <?php
                     echo "'>
@@ -89,12 +89,15 @@
                         </p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Genre:<br>Akcija / Avantura / Fantazija</li>
+                        <li class="list-group-item">Genre:<br> <?php 
+                            echo $genreName;
+                        ?>
+                        </li>
                         <li class="list-group-item">Directors:<br>
 
                             <?php
                             foreach ($directors as $director) {
-                                echo $director->name . ",";
+                                echo "<a href='" . site_url($controller . "/showDirector/" . $director->id) . "'>" . $director->name . "</a>,";
                             }
                             ?>
 
@@ -179,7 +182,7 @@
                 foreach ($comments as $comment) {
 
                     echo "<p><b>" . $comment->title . "</b><br>" . $comment->body . "<span>" . $comment->author . "</span></p>";
-                    if ($this->session->userdata('user')->type == 0) {
+                    if ($controller=="Admin") {
                         echo "<form action=".site_url("Admin/obrisiKomentar/".$comment->id."/".$movie->id) . " method='post'>";
                         echo "<input type = 'submit' value = 'Delete' class='dugme'></input>&nbsp&nbsp";
                         echo "</form>";
@@ -190,7 +193,7 @@
         </div>
 
         <?php
-        if ($controller != "Guest") {
+        if ($controller != "Guest" && $controller != "Admin" ) {
 
             echo " <div class='row mt-5'>
             <div class='col-lg-12'>

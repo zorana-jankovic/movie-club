@@ -14,4 +14,15 @@ class ModelGenres extends CI_Model{
         return $result;
     }
     
+    public function fetch($id) {
+        
+        $this->db->where("id",$id);
+        $this->db->from('genres');
+        
+        $query=$this->db->get();
+        $result=$query->row();
+        return $result;
+        
+    }
+    
 }

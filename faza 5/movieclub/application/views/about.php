@@ -124,7 +124,7 @@
                     </p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="mailto:ana_dimitrijevic@outlook.com" class="btn btn-outline-primary btn-sm">Kontaktiraj</a>
+                    <a href="mailto:ana_dimitrijevic@outlook.com" class="btn btn-outline-primary btn-sm">Contact</a>
                 </div>
             </div>
         </div>
@@ -141,7 +141,7 @@
                     </p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="mailto:z.jankovic97@gmail.com" class="btn btn-outline-primary btn-sm">Kontaktiraj</a>
+                    <a href="mailto:z.jankovic97@gmail.com" class="btn btn-outline-primary btn-sm">Contact</a>
                 </div>
             </div>
         </div>
@@ -158,7 +158,7 @@
                     </p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="mailto:markogrundig@gmail.com" class="btn btn-outline-primary btn-sm"> Kontaktiraj </a>
+                    <a href="mailto:markogrundig@gmail.com" class="btn btn-outline-primary btn-sm"> Contact </a>
                 </div>
             </div>
         </div>

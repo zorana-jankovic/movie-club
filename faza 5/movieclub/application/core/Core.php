@@ -91,15 +91,18 @@ class Core extends CI_Controller {
         $i = 0;
         $directors = [];
         $cast = [];
+        $genres = [];
 
 
         foreach ($movies as $movie) {
             $directors[$i] = $this->ModelDirects->fetch($movie->id);
             $cast[$i] = $this->ModelCast->fetch($movie->id);
+            $genre = $this->ModelGenres->fetch($movie->genre);
+            $genres[$i] = $genre->name;
             $i++;
         }
 
-        $this->showContent("movies.php", array('movies' => $movies, 'directors' => $directors, 'cast' => $cast, 'myMovies' => $myMovies, 'controller' => $controller));
+        $this->showContent("movies.php", array('movies' => $movies, 'directors' => $directors, 'cast' => $cast, 'genres' => $genres , 'myMovies' => $myMovies, 'controller' => $controller));
     }
 
     public function showMovie($id, $controller = null) {
@@ -108,7 +111,9 @@ class Core extends CI_Controller {
         $comments = $this->ModelComments->fetch($id);
         $cast = $this->ModelCast->fetch($id);
         $directors = $this->ModelDirects->fetch($id);
-        $this->showContent("movie.php", ["movie" => $movie, "comments" => $comments, "cast" => $cast, "directors" => $directors, "controller" => $controller]);
+        $genre = $this->ModelGenres->fetch($movie->genre);
+        $genreName=$genre->name;
+        $this->showContent("movie.php", ["movie" => $movie, "comments" => $comments,"genreName" => $genreName, "cast" => $cast, "directors" => $directors, "controller" => $controller]);
     }
 
     public function actors($controller) {

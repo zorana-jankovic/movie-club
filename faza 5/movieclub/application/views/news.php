@@ -1,5 +1,4 @@
 <div class="container">
-
     <div>
         <ul class="breadcrumb">
             <li><a href = "<?php echo site_url($controller . "/index"); ?>"> Home</a></li>
@@ -15,7 +14,7 @@
          if(isset($poruka)){
          echo "<div class='alert alert-info' id='alert_template' role='alert'>";
                
-                echo "<font color='red'>".(String)$poruka."</font><br>";
+                echo "<strong>".(String)$poruka."</strong><br>";
              
               // echo " <button type='button' class='close'>×</button>";
             echo "</div>";
@@ -27,9 +26,6 @@
     echo "</div>";
      
     ?>
-
-   
-
 </div>
 
 

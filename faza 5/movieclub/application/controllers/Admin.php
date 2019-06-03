@@ -85,6 +85,17 @@ class Admin extends Core {
         $this->session->sess_destroy();
         redirect("Guest");
     }
+    
+      public function sort($controller = null) {
+        $controller = "Admin";
+        parent::sort($controller);
+    }
+
+    public function search($controller = null) {
+
+        $controller = "Admin";
+        parent::search($controller);
+    }
 
     public function ukloniKorisnika($id) {
         $this->ModelUser->deleteUser($id);

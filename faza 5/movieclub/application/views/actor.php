@@ -32,7 +32,7 @@
                             <li class="list-group-item">Birthplace: <?php echo $state->city . "," . $state->state ?></li>
                         </ul>
                         <br>
-                        <?php if ($controller!="Guest") {
+                        <?php if ($controller!="Guest" && $controller!="Admin") {
                         echo "<button type='submit' class='btn btn-sm btn-success'>Subscribe &nbsp;<i class='far fa-bell'></i></button>";
                         }?>
                     </div>
