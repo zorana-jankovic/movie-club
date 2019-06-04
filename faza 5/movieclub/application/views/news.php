@@ -40,6 +40,8 @@
         <?php
         $first = true;
         foreach ($featured as $featuredItem) {
+            
+            
 
             if ($first) {
 

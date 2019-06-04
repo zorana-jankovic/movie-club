@@ -7,8 +7,8 @@
         </ul>
     </div>
 
- 
-   
+
+
 
 </div>
 
@@ -25,7 +25,8 @@
     foreach ($vesti as $newsItem) {
 
 
-        echo "<div class = 'row'>
+        if ($newsItem->status == 1) {
+            echo "<div class = 'row'>
                 <div class = 'col-lg-4'>
                     <img class = 'img-fluid' src='" . base_url($newsItem->imgSrc) . "'>
                      <br><br>
@@ -36,14 +37,15 @@
                     <hr>
                     <p>" . $newsItem->body . "</p>
                         <span> $newsItem->author </span>";
-                            
-  echo "<form action=" . site_url($controller."/obrisiNot/" . $newsItem->id) . " method='post'>";
-                                echo "<input type = 'submit' value = 'Delete' class='dugme'></input>&nbsp&nbsp";
-                                echo "</form>";
-          echo"      </div>
+
+            echo "<form action=" . site_url($controller . "/obrisiNot/" . $newsItem->id) . " method='post'>";
+            echo "<input type = 'submit' value = 'Delete' class='dugme'></input>&nbsp&nbsp";
+            echo "</form>";
+            echo"      </div>
             </div>
             <br>
             <hr style = 'border-top: 5px solid #ccc; background: transparent;'>";
+        }
     }
     ?>
 

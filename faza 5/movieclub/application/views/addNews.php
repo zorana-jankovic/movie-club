@@ -4,7 +4,7 @@
 
     <ul class = "breadcrumb">
         <li><a href="<?php echo site_url($controller . "/index"); ?>">Home</a></li>
-        <li><a href="#" class="current">Add Movie</a></li>
+        <li><a href="#" class="current">Add News</a></li>
     </ul>
 
 

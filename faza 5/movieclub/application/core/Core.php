@@ -54,6 +54,7 @@ class Core extends CI_Controller {
         for ($i = 1; $i < 3; $i++) {
             $featured[$i] = $this->ModelNews->fetchFeatured($latest_date);
             $latest_date = $featured[$i]->date;
+           
         }
 
 
@@ -153,14 +154,17 @@ class Core extends CI_Controller {
         $directors = [];
         $cast = [];
 
+        $genres = [];
 
         foreach ($movies as $movie) {
             $directors[$i] = $this->ModelDirects->fetch($movie->id);
             $cast[$i] = $this->ModelCast->fetch($movie->id);
+            $genre = $this->ModelGenres->fetch($movie->genre);
+            $genres[$i] = $genre->name;
             $i++;
         }
 
-        $this->showContent("movies.php", array('movies' => $movies, 'directors' => $directors, 'cast' => $cast, 'myMovies' => null, 'controller' => $controller));
+        $this->showContent("movies.php", array('movies' => $movies, 'directors' => $directors, 'cast' => $cast, 'genres'=>$genres,'myMovies' => null, 'controller' => $controller));
     }
 
     public function sort($controller) {
@@ -190,15 +194,18 @@ class Core extends CI_Controller {
         $i = 0;
         $directors = [];
         $cast = [];
+        $genres = [];
 
 
         foreach ($sortedMovies as $movie) {
             $directors[$i] = $this->ModelDirects->fetch($movie->id);
             $cast[$i] = $this->ModelCast->fetch($movie->id);
+            $genre = $this->ModelGenres->fetch($movie->genre);
+            $genres[$i] = $genre->name;
             $i++;
         }
 
-        $this->showContent("movies.php", array('movies' => $sortedMovies, 'directors' => $directors, 'cast' => $cast, 'myMovies' => null, 'controller' => $controller));
+        $this->showContent("movies.php", array('movies' => $sortedMovies, 'directors' => $directors, 'cast' => $cast, 'genres'=>$genres,'myMovies' => null, 'controller' => $controller));
     }
 
 }

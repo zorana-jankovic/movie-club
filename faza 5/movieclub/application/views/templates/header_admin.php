@@ -32,10 +32,11 @@
                         <li><a href="<?php echo site_url("Admin/movies"); ?>">Movies</a></li>
                         <li><a href="<?php echo site_url("Admin/actors"); ?>">Actors</a></li>
                         <li><a href="<?php echo site_url("Admin/directors"); ?>">Directors</a></li>
-                        <li><a href="<?php echo site_url("Admin/news"); ?>">News</a></li>
+                       
                         
                     </ul>			
                 </li>
+                 <li><a href="<?php echo site_url("Admin/news"); ?>">News</a></li>
                 <li><a href ="<?php echo site_url("Admin/logout"); ?>"> Logout </a></li>
             </ul>
         </header>

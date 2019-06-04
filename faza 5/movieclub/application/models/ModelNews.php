@@ -26,24 +26,25 @@ class ModelNews extends CI_Model {
 
     public function fetchFeatured($latest_date = null) {
 
+        $status=1;
         $this->db->select('*');
         if ($latest_date) {
             $this->db->where('date <', $latest_date);
         }
         $this->db->order_by('date', 'DESC');
         $this->db->limit(1);
+        $this->db->where('status',$status);
         $query = $this->db->get('news');
-
         $result = $query->row();
+
         return $result;
     }
 
     public function fetchById($id) {
-       
+
         $this->db->where("id", $id);
         $this->db->from('news');
         return $this->db->get()->result();
-        
     }
 
     public function fetchByName($title) {

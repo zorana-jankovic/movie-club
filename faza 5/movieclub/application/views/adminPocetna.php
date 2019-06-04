@@ -16,8 +16,8 @@
 
     <table class="table table-fluid">
         <tr>
-            <td align="center">
-                <h2>Users</h2>
+            <td width = '20%'>
+                <h2>Moderators</h2>
                 <br>
                 <div class="userlist">
 
@@ -32,6 +32,8 @@
                             echo "<form action=" . site_url("Admin/ukloniKorisnika/" . $korisnik1->id) . " method='post'>";
                             echo "<input type = 'submit' value = 'Delete' class='btn btn-outline-danger'></input>&nbsp&nbsp";
                             echo "</form>";
+                            echo "</li>";
+                            echo "</br>";
                         }
                         ?>
 
@@ -39,8 +41,10 @@
                     </ol>
 
                 </div>
-
-
+            </td>
+            <td width = '20%'>
+                <h2>Users</h2>
+                <br>
                 <div class="userlist">	
 
 
@@ -57,6 +61,8 @@
                             echo "<form action=" . site_url("Admin/unaprediKorisnika/" . $korisnik2->id) . " method='post'>";
                             echo "<input type = 'submit' value = 'Promote' class='btn btn-outline-success'></input>&nbsp&nbsp";
                             echo "</form>";
+                            echo "</li>";
+                            echo "</br>";
                         }
                         ?>
 
@@ -65,13 +71,10 @@
 
                 </div>
 
-
-
-
             </td>
 
 
-            <td style="padding-right: 550px;">
+            <td>
 
                 <h2 align="center"> Pending requests </h2>
                 <br>    
@@ -82,7 +85,7 @@
 
                     echo "<div class = 'row'>
                                 <div class = 'col-lg-4'>
-                                    <img style='width:600px; height:400px;' class = 'img-fluid' src='" . base_url($vest->imgSrc) . "'>
+                                    <img  class = 'img-fluid' src='" . base_url($vest->imgSrc) . "'>
                                     <br><br>
                                 </div>
 
