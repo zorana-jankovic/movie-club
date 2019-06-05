@@ -9,87 +9,70 @@
 
 </div>
 
-
-
-
-<div>
+<div class="container">
 
     <table class="table table-fluid">
+
+        <thead align="center"> 
+        <th>Moderators</th>
+        <th>Users</th>    
+        </thead>
+
         <tr>
-            <td width = '20%'>
-                <h2>Moderators</h2>
-                <br>
-                <div class="userlist">
+            <td align="center">
+                <ol> 
+                    <?php
+                    foreach ($korisnici1 as $korisnik1) {
 
 
-                    <ol> 
-
-                        <?php
-                        foreach ($korisnici1 as $korisnik1) {
-
-
-                            echo "<li>Moderator: " . $korisnik1->username . "</li>";
-                            echo "<form action=" . site_url("Admin/ukloniKorisnika/" . $korisnik1->id) . " method='post'>";
-                            echo "<input type = 'submit' value = 'Delete' class='btn btn-outline-danger'></input>&nbsp&nbsp";
-                            echo "</form>";
-                            echo "</li>";
-                            echo "</br>";
-                        }
-                        ?>
-
-
-                    </ol>
-
-                </div>
+                        echo "<li> " . $korisnik1->username . "</li>";
+                        echo "<form action=" . site_url("Admin/ukloniKorisnika/" . $korisnik1->id) . " method='post'>";
+                        echo "<input type = 'submit' value = 'Delete' class='btn btn-sm btn-outline-danger'></input>&nbsp&nbsp";
+                        echo "</form>";
+                        echo "</li>";
+                        echo "</br>";
+                    }
+                    ?>
+                </ol>
             </td>
-            <td width = '20%'>
-                <h2>Users</h2>
-                <br>
-                <div class="userlist">	
+            <td align="center">
+                <ol> 
+                    <?php
+                    foreach ($korisnici2 as $korisnik2) {
 
 
-                    <ol> 
-
-                        <?php
-                        foreach ($korisnici2 as $korisnik2) {
-
-
-                            echo "<li>User: " . $korisnik2->username . "</li>";
-                            echo "<form action=" . site_url("Admin/ukloniKorisnika/" . $korisnik2->id) . " method='post'>";
-                            echo "<input type = 'submit' value = 'Delete' class='btn btn-outline-danger'></input>&nbsp&nbsp";
-                            echo "</form>";
-                            echo "<form action=" . site_url("Admin/unaprediKorisnika/" . $korisnik2->id) . " method='post'>";
-                            echo "<input type = 'submit' value = 'Promote' class='btn btn-outline-success'></input>&nbsp&nbsp";
-                            echo "</form>";
-                            echo "</li>";
-                            echo "</br>";
-                        }
-                        ?>
-
-
-                    </ol>
-
-                </div>
-
+                        echo "<li> " . $korisnik2->username . "</li>";
+                        echo "<form action=" . site_url("Admin/ukloniKorisnika/" . $korisnik2->id) . " method='post'>";
+                        echo "<input type = 'submit' value = 'Delete' class='btn btn-sm btn-outline-danger'></input>&nbsp&nbsp";
+                        echo "</form>";
+                        echo "<form action=" . site_url("Admin/unaprediKorisnika/" . $korisnik2->id) . " method='post'>";
+                        echo "<input type = 'submit' value = 'Promote' class='btn btn-sm btn-outline-success'></input>&nbsp&nbsp";
+                        echo "</form>";
+                        echo "</li>";
+                        echo "</br>";
+                    }
+                    ?>
+                </ol>
             </td>
-
-
-            <td>
-
-                <h2 align="center"> Pending requests </h2>
-                <br>    
+        </tr>
+        <tr>
+             <thead align="center"> 
+                <th colspan="2">Pending requests</th>
+            </thead>
+            
+            <td colspan="2">
 
                 <?php
                 foreach ($vesti as $vest) {
 
 
                     echo "<div class = 'row'>
-                                <div class = 'col-lg-4'>
-                                    <img  class = 'img-fluid' src='" . base_url($vest->imgSrc) . "'>
+                                <div class = 'col-lg-2'>
+                                    <img  style='width:150px; height=150px;' class = 'img-fluid' src='" . base_url($vest->imgSrc) . "'>
                                     <br><br>
                                 </div>
 
-                                <div class = 'col-lg-8'>
+                                <div class = 'col-lg-10'>
                                      <h5>" . $vest->title . "</h5>
                                          <hr>
                                             <p>" . $vest->body . "</p>
@@ -100,13 +83,12 @@
 
 
                     echo "</div>";
-                    echo " <p> </p>&nbsp";
-
+                    
                     echo "<form action=" . site_url("Admin/dodajVest/" . $vest->id) . " method='post'>";
-                    echo "<input type = 'submit' value = 'Approve' class='btn btn-outline-success'></input>&nbsp&nbsp";
+                    echo "<input type = 'submit' value = 'Approve' class='btn btn-sm btn-outline-success'></input>&nbsp&nbsp";
                     echo "</form>";
                     echo "<form action=" . site_url("Admin/odbijVest/" . $vest->id) . " method='post'>";
-                    echo "<input type = 'submit' value = 'Dismiss' class='btn btn-outline-danger'></input>&nbsp&nbsp";
+                    echo "<input type = 'submit' value = 'Dismiss' class='btn btn-sm btn-outline-danger'></input>&nbsp&nbsp";
                     echo "</form>";
 
 
