@@ -85,7 +85,7 @@ class Core extends CI_Controller {
     }
     public function movies($controller, $movies = null, $myMovies = null) {
 
-        if ($movies == null) {
+        if ($myMovies != true) {
             $movies = $this->ModelMovies->fetchAll();
         }
 

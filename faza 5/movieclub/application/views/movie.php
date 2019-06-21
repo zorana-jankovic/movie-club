@@ -184,7 +184,7 @@
                     echo "<p><b>" . $comment->title . "</b><br>" . $comment->body . "<span>" . $comment->author . "</span></p>";
                     if ($controller=="Admin") {
                         echo "<form action=".site_url("Admin/obrisiKomentar/".$comment->id."/".$movie->id) . " method='post'>";
-                        echo "<input type = 'submit' value = 'Delete' class='dugme'></input>&nbsp&nbsp";
+                        echo "<input type = 'submit' value = 'Delete' class='btn btn-outline-danger'></input>&nbsp&nbsp";
                         echo "</form>";
                     }
                 }

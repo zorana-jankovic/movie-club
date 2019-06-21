@@ -18,7 +18,7 @@
     
     <div class="row">
         <div class="col-sm-4">
-            <img class=" img-fluid" src="<?php echo base_url($director->profileImgLeft) ?>">
+            <img class="img-thumbnail img-fluid" src="<?php echo base_url($director->profileImgLeft) ?>">
         </div>
         <div class="col-sm-4">
             <div class="card">
@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-sm-4">
-            <img class=" img-fluid" src="<?php echo base_url($director->profileImgRight) ?>">
+            <img class="img-thumbnail img-fluid" src="<?php echo base_url($director->profileImgRight) ?>">
         </div>
     </div>
 

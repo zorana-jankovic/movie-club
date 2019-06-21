@@ -28,7 +28,7 @@
                         </div>
 
                         <div class='media-body'>
-                            <h3 class='mt-0' style='padding-top:10px;'>". $director->name . "</h3>
+                            <a href='". site_url($controller . "/showDirector/".$director->id) ."'><h3 class='mt-0' style='padding-top:10px;'>". $director->name . "</h3></a>
                             <p>". $director->highlight ."</p>
 
                         </div>
