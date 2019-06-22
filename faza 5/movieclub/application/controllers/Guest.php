@@ -9,7 +9,7 @@
 require_once APPPATH . 'core/Core.php';
 
 class Guest extends Core {
-
+    /**
      * Kreiranje nove instance
      * @return void
      */
